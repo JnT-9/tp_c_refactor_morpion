@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tp_c_refactor_morpion", "tp_c_refactor_morpion.csproj", "{6724B97E-0BDB-4C06-A35E-B2A172B8A1DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6724B97E-0BDB-4C06-A35E-B2A172B8A1DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6724B97E-0BDB-4C06-A35E-B2A172B8A1DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6724B97E-0BDB-4C06-A35E-B2A172B8A1DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6724B97E-0BDB-4C06-A35E-B2A172B8A1DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D92B6B1-5CFE-4D80-A359-A24B55DB4B9A}
+	EndGlobalSection
+EndGlobal
