@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 
 namespace TicTacToe;
 
@@ -17,6 +18,14 @@ public class GameDisplay
     public GameDisplay(GameBoard board)
     {
         _board = board;
+    }
+
+    /// <summary>
+    /// Shows a general message to the players
+    /// </summary>
+    public void ShowMessage(string message)
+    {
+        Console.WriteLine(message);
     }
 
     /// <summary>
@@ -66,11 +75,28 @@ public class GameDisplay
     }
 
     /// <summary>
-    /// Shows a message asking the current player to make their move
+    /// Shows whose turn it is and what they should do
     /// </summary>
-    public void ShowTurnPrompt(Player currentPlayer)
+    public void ShowTurn(IPlayer player)
     {
-        Console.WriteLine($"Player {currentPlayer.ToSymbol()} - Enter row (1-3) and column (1-3), separated by a space, or 'q' to quit...");
+        if (player is HumanPlayer)
+        {
+            ShowTurnPrompt(player.PlayerType);
+        }
+        else if (player is AIPlayer)
+        {
+            Console.WriteLine($"AI Player ({player.PlayerType.ToSymbol()}) is thinking...");
+            // Add a small delay to make it feel more natural
+            Thread.Sleep(1000);
+        }
+    }
+
+    /// <summary>
+    /// Shows a message asking the human player to make their move
+    /// </summary>
+    private void ShowTurnPrompt(Player player)
+    {
+        Console.WriteLine($"Player {player.ToSymbol()} - Enter row (1-3) and column (1-3), separated by a space, or 'q' to quit...");
     }
 
     /// <summary>

@@ -63,6 +63,18 @@ public class GameBoard
     }
 
     /// <summary>
+    /// Removes a player's mark from a cell (used by AI to simulate moves)
+    /// </summary>
+    public void UndoLastMove(int row, int column)
+    {
+        var cell = GetCell(row, column);
+        if (cell != null)
+        {
+            cell.ClearValue();
+        }
+    }
+
+    /// <summary>
     /// Checks if any player has won the game by getting three in a row
     /// (horizontally, vertically, or diagonally)
     /// </summary>

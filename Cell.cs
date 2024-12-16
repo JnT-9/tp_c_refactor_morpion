@@ -56,6 +56,14 @@ internal class Cell
     }
 
     /// <summary>
+    /// Removes any mark from this cell (makes it empty again)
+    /// </summary>
+    internal void ClearValue()
+    {
+        this.Value = null;
+    }
+
+    /// <summary>
     /// Creates a new empty cell - this is a helper method to make the code cleaner
     /// </summary>
     internal static Cell EmptyCell(int row, int column)
