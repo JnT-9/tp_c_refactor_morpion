@@ -12,3 +12,4 @@ D:\4.Dev\tp_c_refactor_morpion\obj\Debug\net9.0\refint\tp_c_refactor_morpion.dll
 D:\4.Dev\tp_c_refactor_morpion\obj\Debug\net9.0\tp_c_refactor_morpion.pdb
 D:\4.Dev\tp_c_refactor_morpion\obj\Debug\net9.0\tp_c_refactor_morpion.genruntimeconfig.cache
 D:\4.Dev\tp_c_refactor_morpion\obj\Debug\net9.0\ref\tp_c_refactor_morpion.dll
+D:\4.Dev\tp_c_refactor_morpion\obj\Debug\net9.0\tp_c_refactor_morpion.sourcelink.json
