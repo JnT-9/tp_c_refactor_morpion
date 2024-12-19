@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace TicTacToe;
 
@@ -8,18 +9,21 @@ namespace TicTacToe;
 /// </summary>
 internal class Program
 {
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         bool keepPlaying = true;
         while (keepPlaying)
         {
-            PlayOneGame();
+            await PlayOneGame();
             keepPlaying = AskToPlayAgain();
         }
     }
 
-    private static void PlayOneGame()
+    private static async Task PlayOneGame()
     {
+        Console.Clear();
+        DisplayHeader();
+
         // Create shared game components
         var board = new GameBoard();
         var display = new GameDisplay(board);
@@ -29,10 +33,9 @@ internal class Program
         // Get game mode from player
         while (true)
         {
-            display.ShowMessage("Welcome to Tic Tac Toe!");
-            display.ShowMessage("1. Play against another player");
+            display.ShowMessage("\n1. Play against another player");
             display.ShowMessage("2. Play against AI");
-            display.ShowMessage("Choose game mode (1 or 2):");
+            display.ShowMessage("\nChoose game mode (1 or 2):");
 
             string? choice = Console.ReadLine();
             if (game.SelectGameMode(choice))
@@ -42,7 +45,29 @@ internal class Program
         }
 
         // Play the game
-        game.PlayGame();
+        await game.PlayGame();
+    }
+
+    private static void DisplayHeader()
+    {
+        string[] header = {
+            @"  _______ _        _______           _______         ",
+            @" |__   __(_)      |__   __|         |__   __|       ",
+            @"    | |   _  ___     | | __ _  ___     | | ___   ___ ",
+            @"    | |  | |/ __|    | |/ _` |/ __|    | |/ _ \ / _ \",
+            @"    | |  | | (__     | | (_| | (__     | | (_) |  __/",
+            @"    |_|  |_|\___|    |_|\__,_|\___|    |_|\___/ \___|",
+            @"",
+            @"                   Let's Play!                        ",
+            @""
+        };
+
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        foreach (string line in header)
+        {
+            Console.WriteLine(line);
+        }
+        Console.ResetColor();
     }
 
     private static bool AskToPlayAgain()

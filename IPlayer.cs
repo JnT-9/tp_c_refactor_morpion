@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace TicTacToe;
 
 /// <summary>
@@ -14,6 +16,7 @@ public interface IPlayer
     /// <summary>
     /// Gets the next move from the player
     /// Returns null if the player wants to quit
+    /// For AI players, this includes a thinking delay
     /// </summary>
-    (int row, int column)? GetNextMove(GameBoard board);
+    Task<(int row, int column)?> GetNextMove(GameBoard board);
 } 

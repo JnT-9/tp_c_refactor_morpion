@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tp_c_refactor_morpion")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9daaee680a8578d0a90a82437c023ac57392f177")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+921119128bf05a119a6715704faa8b2cdd7ee4bc")]
 [assembly: System.Reflection.AssemblyProductAttribute("tp_c_refactor_morpion")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tp_c_refactor_morpion")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

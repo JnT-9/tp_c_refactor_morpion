@@ -1,3 +1,6 @@
+using System;
+using System.Threading.Tasks;
+
 namespace TicTacToe;
 
 /// <summary>
@@ -17,17 +20,22 @@ public class HumanPlayer : IPlayer
         _display = display;
     }
 
-    public (int row, int column)? GetNextMove(GameBoard board)
+    public async Task<(int row, int column)?> GetNextMove(GameBoard board)
     {
         while (true)
         {
             // Show prompt and get input
             _display.ShowTurn(this);
-            string? input = Console.ReadLine();
+            // Utilise Task.Run car Console.ReadLine est bloquant
+            string? input = await Task.Run(() => Console.ReadLine());
 
             // Check for quit
             if (_rules.IsQuitCommand(input))
                 return null;
+
+            // Ignore les entrées qui ressemblent à des choix de menu
+            if (input == "1" || input == "2")
+                continue;
 
             // Try to parse the move
             if (_rules.TryParseMove(input, out int row, out int column) && 

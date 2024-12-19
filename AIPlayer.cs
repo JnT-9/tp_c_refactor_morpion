@@ -1,4 +1,6 @@
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace TicTacToe;
 
@@ -13,14 +15,76 @@ namespace TicTacToe;
 /// </summary>
 public class AIPlayer : IPlayer
 {
+    // Interface pour l'affichage
+    private readonly IGameDisplay _display;
+    // Générateur de nombres aléatoires pour le délai
+    private readonly Random _random = new();
+    // Animation de chargement avec slash rotatif et points
+    private readonly string[] _thinkingAnimation = { 
+        "/ Thinking   ", 
+        "- Thinking.  ", 
+        "\\ Thinking..", 
+        "| Thinking..."
+    };
+    // Délai entre chaque frame de l'animation (en ms)
+    private const int ANIMATION_DELAY = 150; // Réduit pour une rotation plus fluide
+
     public Player PlayerType { get; }
 
-    public AIPlayer(Player playerType)
+    public AIPlayer(Player playerType, IGameDisplay display)
     {
         PlayerType = playerType;
+        _display = display;
     }
 
-    public (int row, int column)? GetNextMove(GameBoard board)
+    public async Task<(int row, int column)?> GetNextMove(GameBoard board)
+    {
+        // Génère un délai aléatoire entre 0.5 et 5 secondes
+        int thinkingTime = _random.Next(500, 5001);
+        
+        // Crée une tâche pour le délai de réflexion
+        var thinkingTask = Task.Delay(thinkingTime);
+        
+        // Démarre l'animation en parallèle
+        var animationTask = ShowThinkingAnimation(thinkingTime);
+        
+        // Attend que les deux tâches soient terminées
+        await Task.WhenAll(thinkingTask, animationTask);
+
+        // Efface la dernière frame de l'animation
+        _display.Clear();
+        _display.Display();
+
+        // Calcule et retourne le prochain mouvement
+        return CalculateNextMove(board);
+    }
+
+    /// <summary>
+    /// Affiche une animation de chargement pendant que l'IA "réfléchit"
+    /// </summary>
+    private async Task ShowThinkingAnimation(int totalDuration)
+    {
+        // Continue l'animation jusqu'à ce que le temps de réflexion soit écoulé
+        var endTime = DateTime.Now.AddMilliseconds(totalDuration);
+        
+        while (DateTime.Now < endTime)
+        {
+            foreach (var frame in _thinkingAnimation)
+            {
+                Console.Write("\r" + frame); // \r ramène le curseur au début de la ligne
+                await Task.Delay(ANIMATION_DELAY);
+                
+                // Arrête si on a dépassé le temps total
+                if (DateTime.Now >= endTime) break;
+            }
+        }
+        Console.WriteLine(); // Nouvelle ligne après l'animation
+    }
+
+    /// <summary>
+    /// Calcule le prochain mouvement selon la stratégie de l'IA
+    /// </summary>
+    private (int row, int column)? CalculateNextMove(GameBoard board)
     {
         // Try to win
         var winningMove = FindWinningMove(board, PlayerType);

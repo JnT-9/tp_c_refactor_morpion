@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 
 namespace TicTacToe;
 
@@ -76,8 +77,8 @@ public class Game
                 _display.ShowMessage("You will play as O (Player One)");
                 // Create human player
                 _player1 = new HumanPlayer(Player.One, _rules, _display);
-                // Create AI opponent
-                _player2 = new AIPlayer(Player.Two);
+                // Create AI opponent with display interface
+                _player2 = new AIPlayer(Player.Two, _display);
                 return true;
 
             default: // Invalid choice
@@ -88,7 +89,7 @@ public class Game
     /// <summary>
     /// Starts and manages the game flow
     /// </summary>
-    public GameResult PlayGame()
+    public async Task<GameResult> PlayGame()
     {
         // Verify game mode was selected
         if (_player1 == null || _player2 == null)
@@ -127,7 +128,7 @@ public class Game
         while (!_gameEnded)
         {
             // Process one turn, quit if player requested
-            if (!PlayTurn())
+            if (!await PlayTurn())
                 return GameResult.Quit;
         }
 
@@ -138,20 +139,23 @@ public class Game
     /// <summary>
     /// Processes a single turn for the current player
     /// </summary>
-    private bool PlayTurn()
+    private async Task<bool> PlayTurn()
     {
         // Show whose turn it is
         _display.ShowTurn(_currentPlayer!);
 
         // Get the player's move
-        var move = _currentPlayer!.GetNextMove(_board);
+        var moveResult = await _currentPlayer!.GetNextMove(_board);
 
         // Check if player wants to quit
-        if (!move.HasValue)
+        if (!moveResult.HasValue)
+        {
+            _gameEnded = true;  // Marque le jeu comme terminé
             return false;
+        }
 
         // Try to make the move
-        if (!_board.TryPlay(move.Value.row, move.Value.column, _currentPlayer.PlayerType))
+        if (!_board.TryPlay(moveResult.Value.row, moveResult.Value.column, _currentPlayer.PlayerType))
         {
             // Show error if move was invalid
             _display.ShowInvalidInput("Invalid move. Try again.");

@@ -100,7 +100,7 @@ public class GameDisplay : IGameDisplay
         }
         else if (player is AIPlayer)
         {
-            Console.WriteLine($"AI Player ({player.PlayerType.ToSymbol()}) is thinking...");
+            Console.WriteLine($"AI Player ({player.PlayerType.ToSymbol()})");
             // Add a small delay to make it feel more natural
             Thread.Sleep(1000);
         }
