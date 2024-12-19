@@ -1,6 +1,7 @@
 # Morpion (Tic Tac Toe) - Projet Principal
 
 ## Description
+
 Ce projet implémente un jeu de Morpion (Tic Tac Toe) en C# avec une architecture orientée objet. Le jeu permet de jouer contre un autre joueur ou contre une IA.
 
 ## Structure du Projet
@@ -57,8 +58,9 @@ Ce projet implémente un jeu de Morpion (Tic Tac Toe) en C# avec une architectur
 ## Architecture
 
 Le projet suit les principes SOLID :
+
 - Single Responsibility : chaque classe a une responsabilité unique
 - Open/Closed : extensible pour ajouter de nouveaux types de joueurs
 - Liskov Substitution : les types de joueurs sont interchangeables
 - Interface Segregation : interfaces ciblées et spécifiques
-- Dependency Inversion : dépendances via des interfaces 
+- Dependency Inversion : dépendances via des interfaces
