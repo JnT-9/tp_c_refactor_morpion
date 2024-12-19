@@ -6,11 +6,11 @@ namespace TicTacToe;
 public class HumanPlayer : IPlayer
 {
     private readonly GameRules _rules;
-    private readonly GameDisplay _display;
+    private readonly IGameDisplay _display;
 
     public Player PlayerType { get; }
 
-    public HumanPlayer(Player playerType, GameRules rules, GameDisplay display)
+    public HumanPlayer(Player playerType, GameRules rules, IGameDisplay display)
     {
         PlayerType = playerType;
         _rules = rules;

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\4.Dev\\tp_c_refactor_morpion\\tp_c_refactor_morpion.csproj": {}
+    "d:\\4.Dev\\tp_c_refactor_morpion\\tp_c_refactor_morpion.csproj": {}
   },
   "projects": {
-    "D:\\4.Dev\\tp_c_refactor_morpion\\tp_c_refactor_morpion.csproj": {
+    "d:\\4.Dev\\tp_c_refactor_morpion\\tp_c_refactor_morpion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\4.Dev\\tp_c_refactor_morpion\\tp_c_refactor_morpion.csproj",
+        "projectUniqueName": "d:\\4.Dev\\tp_c_refactor_morpion\\tp_c_refactor_morpion.csproj",
         "projectName": "tp_c_refactor_morpion",
-        "projectPath": "D:\\4.Dev\\tp_c_refactor_morpion\\tp_c_refactor_morpion.csproj",
+        "projectPath": "d:\\4.Dev\\tp_c_refactor_morpion\\tp_c_refactor_morpion.csproj",
         "packagesPath": "C:\\Users\\Jn\\.nuget\\packages\\",
-        "outputPath": "D:\\4.Dev\\tp_c_refactor_morpion\\obj\\",
+        "outputPath": "d:\\4.Dev\\tp_c_refactor_morpion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jn\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -147,4 +147,29 @@ public class GameBoard
             .Any(diagonal => diagonal.All(cell => cell.Value == 'O') || 
                            diagonal.All(cell => cell.Value == 'X'));
     }
+
+    /// <summary>
+    /// Determines which player made the last move by counting X's and O's
+    /// </summary>
+    public Player? GetLastPlayer()
+    {
+        int xCount = 0;
+        int oCount = 0;
+
+        // Count X's and O's on the board
+        foreach (var cell in _grid)
+        {
+            if (cell.Value == 'X') xCount++;
+            if (cell.Value == 'O') oCount++;
+        }
+
+        // If equal counts, O (Player.One) played last
+        // If X has one more, X (Player.Two) played last
+        if (xCount > oCount)
+            return Player.Two;
+        if (xCount == oCount)
+            return Player.One;
+            
+        return null; // Invalid state
+    }
 }

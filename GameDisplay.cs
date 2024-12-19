@@ -4,10 +4,25 @@ using System.Threading;
 namespace TicTacToe;
 
 /// <summary>
+/// Interface for game display to allow mocking in tests
+/// </summary>
+public interface IGameDisplay
+{
+    void ShowMessage(string message);
+    void Display();
+    void Clear();
+    void ShowTurn(IPlayer player);
+    void ShowInvalidMove();
+    void ShowWinner(Player player);
+    void ShowDraw();
+    void ShowInvalidInput(string message);
+}
+
+/// <summary>
 /// This class handles everything related to showing the game on the screen.
 /// It's like an artist that draws the game board and shows messages to the players.
 /// </summary>
-public class GameDisplay
+public class GameDisplay : IGameDisplay
 {
     // Keep track of the game board so we can show its current state
     private readonly GameBoard _board;
